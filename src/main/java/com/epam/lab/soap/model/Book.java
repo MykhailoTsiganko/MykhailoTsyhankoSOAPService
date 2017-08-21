@@ -1,18 +1,23 @@
 package com.epam.lab.soap.model;
 
-import javax.xml.bind.annotation.XmlRootElement;
+
 import java.io.Serializable;
 
-@XmlRootElement
+
 public class Book implements Serializable{
+
     private String name;
+
+
     private String authorName;
-    private String Genre;
+
+
+    private String genre;
 
     public Book(String name, String authorName, String genre) {
         this.name = name;
         this.authorName = authorName;
-        Genre = genre;
+        this.genre = genre;
     }
 
     public Book(){}
@@ -34,11 +39,11 @@ public class Book implements Serializable{
     }
 
     public String getGenre() {
-        return Genre;
+        return genre;
     }
 
     public void setGenre(String genre) {
-        Genre = genre;
+        this.genre = genre;
     }
 
     @Override
@@ -67,7 +72,7 @@ public class Book implements Serializable{
         return "Book{" +
                 "name='" + name + '\'' +
                 ", authorName='" + authorName + '\'' +
-                ", Genre='" + Genre + '\'' +
+                ", genre='" + genre + '\'' +
                 '}';
     }
 }

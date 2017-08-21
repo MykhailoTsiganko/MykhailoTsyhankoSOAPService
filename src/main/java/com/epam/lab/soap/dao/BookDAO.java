@@ -1,19 +1,22 @@
 package com.epam.lab.soap.dao;
 
 import com.epam.lab.soap.model.Book;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookDAO {
-
     public static List<Book> bookList;
 
+    private Logger LOGGER = Logger.getLogger(BookDAO.class);
+
     static{
+
         bookList = new ArrayList<>();
 
         bookList.add(new Book("Чорний ворон", "Василь Шкляр" ,"Пригоди"));
-            bookList.add(new Book("Воно", "Стівен кінг" ,"Жахи"));
+        bookList.add(new Book("Воно", "Стівен кінг" ,"Жахи"));
         bookList.add(new Book("Маруся", "Василь Шкляр" ,"Пригоди"));
         bookList.add(new Book("Чорна рада", "Пантелеймон Куліш" ,"Пригоди"));
         bookList.add(new Book("Жовтий князь", "Василь Барка" ,"Історичний роман"));
@@ -52,6 +55,16 @@ public class BookDAO {
         } else {
             bookList.add(book);
             return true;
+        }
+    }
+
+    public List<Book> getBooksByAuthor(String authorName, int number) {
+        List<Book> bookList = getAllBooks();
+        List<Book> authorBookList = new ArrayList<>();
+        for(int i = 0; i < bookList.size() || authorBookList.size() != number ;i++) {
+            if(bookList.get(i).getAuthorName().equals(authorName)){
+                authorBookList.add(bookList.get(i));
+            }
         }
     }
 }

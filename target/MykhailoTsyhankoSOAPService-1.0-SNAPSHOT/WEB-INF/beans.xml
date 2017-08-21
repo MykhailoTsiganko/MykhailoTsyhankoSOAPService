@@ -8,11 +8,6 @@
 
         <import resource="classpath:META-INF/cxf/cxf.xml" />
 
-        <jaxws:endpoint 
-          id="helloWorld" 
-          implementor="com.epam.lab.soap.web.HelloWorldImpl" 
-          address="/HelloWorld" />
-
         <jaxws:endpoint
                 id="libraryService"
                 implementor="com.epam.lab.soap.web.LibraryServiceImpl"

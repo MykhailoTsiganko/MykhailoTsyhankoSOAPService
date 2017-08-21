@@ -2,7 +2,9 @@ package com.epam.lab.soap.web;
 
 import com.epam.lab.soap.dao.BookDAO;
 import com.epam.lab.soap.model.Book;
-import com.epam.lab.soap.web.faults.LibraryServiceExeption;
+import com.epam.lab.soap.web.faults.FaultMessageExpression;
+import com.epam.lab.soap.web.faults.ServiceException;
+import com.epam.lab.soap.web.faults.ServiceFaultInfo;
 
 import javax.jws.WebService;
 import java.util.List;
@@ -16,13 +18,13 @@ public class LibraryServiceImpl implements LibraryService {
     }
 
     @Override
-    public Book getBook(String name) throws LibraryServiceExeption {
+    public Book getBook(String name) throws ServiceException {
 
         Book book;
         book = BookDAO.getBookByName(name);
 
         if (Objects.isNull(book)) {
-            throw new LibraryServiceExeption("there is no such book!");
+            throw new ServiceException(new ServiceFaultInfo(FaultMessageExpression.NO_BOOK_WITH_NAME,name));
         }
         return book;
     }
@@ -34,12 +36,12 @@ public class LibraryServiceImpl implements LibraryService {
     }
 
     @Override
-    public Book exchangeBook(Book book, String requiredBookName) throws LibraryServiceExeption {
+    public Book exchangeBook(Book book, String requiredBookName) throws ServiceException {
         BookDAO.addBook(book);
         Book requiredBook = BookDAO.getBookByName(requiredBookName);
 
         if (Objects.isNull(requiredBook)) {
-            throw new LibraryServiceExeption("there is no such Book");
+            throw new ServiceException(new ServiceFaultInfo(FaultMessageExpression.NO_BOOK_WITH_NAME,requiredBookName));
         }
         return book;
     }

@@ -1,5 +1,8 @@
-com\epam\lab\soap\web\LibraryServiceImpl.class
-com\epam\lab\soap\web\faults\LibraryServiceExeption.class
-com\epam\lab\soap\web\LibraryService.class
+com\epam\lab\soap\web\faults\ServiceFaultInfo.class
+com\epam\lab\soap\bo\BookBO.class
 com\epam\lab\soap\dao\BookDAO.class
+com\epam\lab\soap\web\faults\FaultMessageExpression.class
+com\epam\lab\soap\web\LibraryServiceImpl.class
+com\epam\lab\soap\web\LibraryService.class
+com\epam\lab\soap\web\faults\ServiceException.class
 com\epam\lab\soap\model\Book.class
