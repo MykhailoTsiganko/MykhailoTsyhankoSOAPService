@@ -1,6 +1,5 @@
 com\epam\lab\soap\web\LibraryServiceImpl.class
+com\epam\lab\soap\web\faults\LibraryServiceExeption.class
 com\epam\lab\soap\web\LibraryService.class
-com\epam\lab\soap\web\HelloWorld.class
 com\epam\lab\soap\dao\BookDAO.class
 com\epam\lab\soap\model\Book.class
-com\epam\lab\soap\web\HelloWorldImpl.class
