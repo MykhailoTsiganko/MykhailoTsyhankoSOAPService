@@ -5,14 +5,15 @@ import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class BookDAO {
     public static List<Book> bookList;
 
-    private Logger LOGGER = Logger.getLogger(BookDAO.class);
+    private static Logger LOGGER = Logger.getLogger(BookDAO.class);
 
     static{
-
+        LOGGER.info("filling DB");
         bookList = new ArrayList<>();
 
         bookList.add(new Book("Чорний ворон", "Василь Шкляр" ,"Пригоди"));
@@ -33,11 +34,12 @@ public class BookDAO {
 
     }
 
-    public static List<Book> getAllBooks() {
+    public static List<Book> findAll() {
         return bookList;
     }
 
-    public static Book getBookByName(String name) {
+    public static Book findByName(String name) {
+        LOGGER.info("findByName method");
         Book myBook = null;
         for(Book book :bookList) {
             if(book.getName().equals(name)) {
@@ -49,7 +51,10 @@ public class BookDAO {
         return myBook;
     }
 
-    public static boolean addBook(Book book) {
+
+    public static boolean insertBook(Book book) {
+        LOGGER.info("insertBook method");
+
         if(bookList.contains(book)) {
             return false;
         } else {
@@ -58,13 +63,20 @@ public class BookDAO {
         }
     }
 
-    public List<Book> getBooksByAuthor(String authorName, int number) {
-        List<Book> bookList = getAllBooks();
-        List<Book> authorBookList = new ArrayList<>();
-        for(int i = 0; i < bookList.size() || authorBookList.size() != number ;i++) {
-            if(bookList.get(i).getAuthorName().equals(authorName)){
-                authorBookList.add(bookList.get(i));
+    public static boolean deleteBook(String name) {
+        LOGGER.info("deleteBook method");
+
+        ListIterator<Book> it = findAll().listIterator();
+        boolean swapped = false;
+
+        while(it.hasNext()) {
+            Book book = it.next();
+            if(book.getName().equals(name)) {
+                it.remove();
+                swapped = true;
+                break;
             }
         }
+        return swapped;
     }
 }

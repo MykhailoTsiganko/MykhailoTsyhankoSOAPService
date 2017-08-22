@@ -2,7 +2,7 @@ package com.epam.lab.soap.web.faults;
 
 
 public enum FaultMessageExpression {
-    NO_BOOK_WITH_NAME("There are no book with  name [%s]");
+    NO_BOOK_WITH_NAME("There are no book with  name [%s]"),NOT_ENOUHT_BOOKS_OF_AUTHOR("There ara only [%d] books of [%s] but required [%d]");
 
     private String messageExpression;
     private FaultMessageExpression(String messageExpression) {
