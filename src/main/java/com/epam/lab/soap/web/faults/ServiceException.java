@@ -1,6 +1,8 @@
 package com.epam.lab.soap.web.faults;
 
+import javax.xml.ws.WebFault;
 
+@WebFault(name = "LibraryFault")
 public class ServiceException extends  Exception {
     private ServiceFaultInfo serviceFaultInfo;
 

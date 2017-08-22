@@ -65,7 +65,7 @@ public class LibraryServiceImpl implements LibraryService {
         List<Book> authorBookList = bookBO.getBooksByAuthorName(authorName);
 
         if (authorBookList.size() < number) {
-            ServiceFaultInfo faultInfo = new ServiceFaultInfo(FaultMessageExpression.NOT_ENOUHT_BOOKS_OF_AUTHOR, authorBookList.size() + 1, authorName, number);
+            ServiceFaultInfo faultInfo = new ServiceFaultInfo(FaultMessageExpression.NOT_ENOUGH_BOOKS_OF_AUTHOR, authorBookList.size() + 1, authorName, number);
             LOGGER.warn(faultInfo.getMessage());
             throw new ServiceException(faultInfo);
         }
